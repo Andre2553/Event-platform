@@ -4,8 +4,8 @@ import { useNavigate } from "react-router-dom";
 import { Logo } from "../components/Logo";
 
 const CREATE_SUBSCRIPTION_MUTATION = gql`
-   mutation CreateSubscriber{
-   CreateSubscriber(data:{name:$name, email: $email}){
+   mutation CreateSubscriber($name:String!, $email:String!) {
+   createSubscriber(data:{name:$name, email: $email}){
       id
    }
 }
@@ -37,11 +37,11 @@ export function Subscribe() {
             <div className="max-w-[640px]">
                <Logo />
                <h1 className="mt-8 text-[2.5rem] leading-tight">Learn the beauty of using <strong>GitHub</strong> in your projects</h1>
-               <p className="mt-4 text-gray-200 leading-relaxed">This will change the way that you develop your applications</p>
+               <p className="mt-4 text-gray-200 leading-relaxed">This will change the way that you develop your applications.</p>
             </div>
             <div className="p-8 bg-gray-700 border border-gray-500 rounded">
                <strong>Register to this Event</strong>
-               <form action="" className="flex flex-col gap-2 w-full">
+               <form onSubmit={handleSubscribe} className=" mt-4 flex flex-col gap-2 w-full">
                   <input
                      className="bg-gray-900 rounded px-5 h-14"
                      type="text"
